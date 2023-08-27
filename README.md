@@ -26,7 +26,7 @@ The API features the following functionalities:
    - The API provides endpoints to perform CRUD operations on shopping cart items.
    - Each user's shopping cart items are scoped to their own account.
 
-   The API implements 5 main entities: User, Product, Product Category, LineItem and Cart. An LineItem is essentially composed of a product details and the quantity of the product in the line item.
+   The API implements 5 main entities: User, Product, Product Category, LineItem and Cart. A LineItem is essentially composed of a product details and the quantity of the product in the line item.
    A cart is essentially a collection of lineItems. To insure that a user is able to view only the cart created by him/her, his/her Frontend application session
    needs to be passed to the API while creating a cart and this cart can only retrieve using the session related to it. To delete a cart, the user must first delete
    all the items in it.
