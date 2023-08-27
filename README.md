@@ -57,8 +57,6 @@ The API features the following functionalities:
 ## Implementation Details
 
 - The API is developed using ASP.NET Core, C#, and Entity Framework Core.
-- OAuth2 authentication is integrated for user login and authentication.
-- Amazon S3 is used for image storage and retrieval.
 - API endpoints are organized in controllers following RESTful conventions.
 - Dependency injection is used to manage service instances.
 - Unit tests are written using testing frameworks like Xunit and Moq.
