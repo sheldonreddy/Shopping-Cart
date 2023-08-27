@@ -13,14 +13,14 @@ Welcome to the Games Global Shopping Cart API documentation! This README provide
 
 ## Introduction
 
-The Games Global Shopping Cart API is a powerful and secure RESTful API designed to provide seamless shopping cart management for users. It's built using ASP.NET Core and integrates with external services such as OAuth2 for user authentication and Amazon S3 for image storage. The API follows best practices to ensure security, performance, and maintainability.
+The Games Global Shopping Cart API is a powerful and secure RESTful API designed to provide seamless shopping cart management for users. It's built using ASP.NET Core and follows best practices to ensure security, performance, and maintainability.
 
 ## API Specification
 
 The API features the following functionalities:
 
 1. **Authentication:**
-   - Users can log in and be authenticated using third-party OAuth2 services, such as Google.
+   - Users can log in and be authenticated. Upon a successful authentication a JWT Token is generated and returned to the user. This token must be passed in all the subsequent requests made by the user to get access to the API resources.
 
 2. **Shopping Cart Operations:**
    - The API provides endpoints to perform CRUD operations on shopping cart items.
