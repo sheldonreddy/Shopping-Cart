@@ -36,9 +36,9 @@ namespace GG_shopping_cart.Services.Implementations
 			return ModelConverter.ModelToDto(cart);
         }
 
-        public async Task<bool> DeleteCart(string id)
+        public async Task<bool> DeleteCart(string userSession)
         {
-            var cart = await _context.Carts.FirstOrDefaultAsync(p => p.Id.ToString() == id);
+            var cart = await _context.Carts.FirstOrDefaultAsync(p => p.UserSession == userSession);
             if (cart == null)
             {
                 return false;

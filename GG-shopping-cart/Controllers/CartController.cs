@@ -174,17 +174,28 @@ namespace GG_shopping_cart.Controllers
         }
 
         // DELETE: api/<CartController>/2
-        [HttpDelete("cart/{id}")]
-        public async Task<object> DeleteCart(string id)
+        [HttpDelete("cart")]
+        public async Task<object> DeleteCart()
         {
             _logger.LogInformation("Cart: Request initiated");
             try
             {
-                _logger.LogInformation("Cart: Deleted", id);
-                bool status = await _cartService.DeleteCart(id);
-                _response.Result = status;
+                HttpContext context = HttpContext;
+                if (context.Request.Headers.TryGetValue("Client_App_Session", out var clientSession))
+                {
+                    _logger.LogInformation("Cart: Deleted", clientSession);
+                    bool status = await _cartService.DeleteCart(clientSession);
+                    _response.Result = status;
 
-                return Ok(_response);
+                    return Ok(_response);
+
+                }
+
+                _logger.LogError("Cart: Missing Header");
+                _response.IsSuccess = false;
+                _response.Result = null;
+
+                return StatusCode(404, _response);
             }
             catch (Exception ex)
             {

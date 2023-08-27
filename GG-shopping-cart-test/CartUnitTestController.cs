@@ -320,14 +320,18 @@ namespace GG_shopping_cart_test
         public async Task Delete_ReturnsOkResultWithSingleCart()
         {
             //Arrange
-            var id = new Guid();
-            cartService.Setup(service => service.DeleteCart(id.ToString()))
+            var clientSession = "some_session";
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Client_App_Session"] = clientSession;
+
+            cartService.Setup(service => service.DeleteCart(clientSession))
                                   .ReturnsAsync(true);
             var controller = new CartsController(cartService.Object, lineItemService.Object, logger.Object);
+            controller.ControllerContext = new ControllerContext { HttpContext = httpContext };
 
             // Act
 
-            var result = await controller.DeleteCart(id.ToString());
+            var result = await controller.DeleteCart();
 
             // Assert
 
@@ -341,15 +345,19 @@ namespace GG_shopping_cart_test
         public async Task Delete_ReturnsInternalServerErrorOnErrorForSingleCart()
         {
             // Arrange
-            var id = new Guid();
-            cartService.Setup(service => service.DeleteCart(id.ToString()))
+            var clientSession = "some_session";
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Client_App_Session"] = clientSession;
+
+            cartService.Setup(service => service.DeleteCart(clientSession))
                               .ThrowsAsync(new Exception("An error occurred"));
 
             var controller = new CartsController(cartService.Object, lineItemService.Object, logger.Object);
+            controller.ControllerContext = new ControllerContext { HttpContext = httpContext };
 
             // Act
 
-            var result = await controller.DeleteCart(id.ToString());
+            var result = await controller.DeleteCart();
 
             // Assert
             var statusCodeResult = Assert.IsType<ObjectResult>(result);
