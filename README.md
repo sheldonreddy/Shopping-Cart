@@ -147,4 +147,4 @@ Open a pull request with a detailed description of your changes.
 
 The Games Global Shopping Cart API is open-source and available under the MIT License.
 
-Feel free to reach out to us at your.email@example.com for any questions or support. We hope you enjoy using the Games Global Shopping Cart API for your shopping cart management needs!
+Feel free to reach out to us at novhakaze@gmail.com for any questions or support. We hope you enjoy using the Games Global Shopping Cart API for your shopping cart management needs!
