@@ -69,7 +69,7 @@ To get started with the Games Global Shopping Cart API, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/GG-shopping-cart-api.git
+   git clone https://github.com/yankazela/Shopping-Cart.git
    ```
 2. Install dependencies
     ```bash
