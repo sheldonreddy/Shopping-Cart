@@ -1,0 +1,57 @@
+﻿<Properties StartupConfiguration="{19E0BB2D-578F-4698-981C-427E1DF42D40}|https">
+  <MonoDevelop.Ide.ItemProperties.GG-shopping-cart-test PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GG-shopping-cart-test/TestBase.cs">
+    <Files>
+      <File FileName="GG-shopping-cart/Entities/Product.cs" Line="16" Column="49" IsPinned="True" />
+      <File FileName="GG-shopping-cart/Controllers/ProductController.cs" Line="149" Column="64" />
+      <File FileName="GG-shopping-cart-test/Usings.cs" Line="1" Column="1" />
+      <File FileName="GG-shopping-cart/Controllers/UserController.cs" Line="33" Column="10" />
+      <File FileName="GG-shopping-cart-test/CartUnitTestController.cs" Line="1" Column="1" />
+      <File FileName="GG-shopping-cart-test/UserUnitTestController.cs" Line="29" Column="22" />
+      <File FileName="GG-shopping-cart-test/ProductUnitTestController.cs" Line="93" Column="56" />
+      <File FileName="GG-shopping-cart/appsettings.json" Line="1" Column="1" />
+      <File FileName="GG-shopping-cart/appsettings.Development.json" Line="19" Column="5" />
+      <File FileName="GG-shopping-cart-test/appsettings.Development.json" Line="25" Column="1" />
+      <File FileName="GG-shopping-cart-test/TestBase.cs" Line="13" Column="42" />
+      <File FileName="GG-shopping-cart/Entities/Category.cs" Line="4" Column="28" />
+      <File FileName="GG-shopping-cart-test/appsettings.json" Line="21" Column="29" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GG-shopping-cart" expanded="True">
+            <Node name="GG-shopping-cart" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="DTO" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+            <Node name="GG-shopping-cart-test" expanded="True">
+              <Node name="appsettings.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="GG-shopping-cart">
+            <Node name="GG-shopping-cart-test" expanded="True">
+              <Node name="GG_shopping_cart_test" expanded="True">
+                <Node name="UserUnitTestController" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GG-shopping-cart PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+</Properties>
