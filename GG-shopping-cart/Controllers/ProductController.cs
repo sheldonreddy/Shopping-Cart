@@ -18,14 +18,12 @@ namespace GG_shopping_cart.Controllers
 	{
 		private readonly IProductService _productService;
 		private readonly ResponseDto _response;
-        private readonly IAmazonS3 _s3Client;
         private readonly string _uploadLocation;
         private readonly ILogger<UsersController> _logger;
 
 
         public ProductsController(
             IProductService productService,
-            IAmazonS3 s3Client,
             IConfiguration configuration,
             ILogger<UsersController> logger
         )
@@ -33,7 +31,6 @@ namespace GG_shopping_cart.Controllers
             _logger = logger;
             _productService = productService;
 			_response = new ResponseDto();
-            _s3Client = s3Client;
             _uploadLocation = ConfigurationHelpers.GetConfigurationValue(configuration, "UploadsDirectory", "");
         }
 
@@ -43,13 +40,13 @@ namespace GG_shopping_cart.Controllers
             Summary = "Fetch all the products",
             Description = "Fetch products for the authenticated user."
         )]
-        public async Task<object> Get()
+        public async Task<object> Get(int pageNumber = 1, int pageSize = 10)
 		{
             _logger.LogInformation("Product: Request initiated");
             try
 			{
-				IEnumerable<ProductDto> productDto = await _productService.GetAllProducts();
-				_response.Result = productDto;
+                ProductsPaginationDto productPaginationDto = await _productService.GetAllProducts(pageNumber, pageSize);
+				_response.Result = productPaginationDto;
 
                 return Ok(_response);
             } catch (Exception ex)
@@ -169,6 +166,7 @@ namespace GG_shopping_cart.Controllers
             }
         }
 
+        // POST: api/<ProductsController>
         [HttpPost("upload")]
         public async Task<object> UploadImage(IFormFile imageFile)
         {
@@ -203,6 +201,17 @@ namespace GG_shopping_cart.Controllers
             }
 
         }
+
+        // GET: api/<ProductsController>
+        [HttpGet("images/{imageName}")]
+        public IActionResult GetImage(string imageName)
+        {
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), _uploadLocation, imageName);
+            var mimeType = "image/jpeg";
+
+            return PhysicalFile(imagePath, mimeType);
+        }
+
 
     }
 }

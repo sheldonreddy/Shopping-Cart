@@ -5,7 +5,7 @@ namespace GG_shopping_cart.Services
 {
 	public interface IProductService
 	{
-		Task<IEnumerable<ProductDto>> GetAllProducts();
+		Task<ProductsPaginationDto> GetAllProducts(int pageNumber, int pageSize);
 
 		Task<ProductDto?> GetProduct(string id);
 

@@ -32,7 +32,12 @@ public class ProductUnitTestController
     public async Task Get_ReturnsOkResultWithAllProducts()
     {
         //Arrange
-        var productDtos = new List<ProductDto>
+        var productsPaginationDto = new ProductsPaginationDto
+        {
+            CurrentPage = 1,
+            TotalItems = 2,
+            PageSize = 10,
+            Products = new List<ProductDto>
         {
             new ProductDto
             {
@@ -52,45 +57,44 @@ public class ProductUnitTestController
                 ImageUrl = "http//picture2.com",
                 CategoryId = new Guid(),
             },
+        }
         };
 
-        productService.Setup(service => service.GetAllProducts())
-                              .ReturnsAsync(productDtos);
+        productService.Setup(service => service.GetAllProducts(1, 10))
+                              .ReturnsAsync(productsPaginationDto);
         var controller = new ProductsController(
             productService.Object,
-            s3Client.Object,
             configuration.Object,
             logger.Object
         );
 
         // Act
 
-        var result = await controller.Get();
+        var result = await controller.Get(1, 10);
 
         // Assert
 
         var okObjectResult = Assert.IsType<OkObjectResult>(result);
         var response = Assert.IsType<ResponseDto>(okObjectResult.Value);
         Assert.True(response.IsSuccess);
-        Assert.Equal(productDtos, response.Result);
+        Assert.Equal(productsPaginationDto, response.Result);
     }
 
     [Fact]
     public async Task Get_ReturnsInternalServerErrorOnErrorForAllProducts()
     {
         // Arrange
-        productService.Setup(service => service.GetAllProducts())
+        productService.Setup(service => service.GetAllProducts(1, 10))
                           .ThrowsAsync(new Exception("An error occurred"));
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
 
         // Act
-        var result = await controller.Get();
+        var result = await controller.Get(1, 10);
 
         // Assert
         var statusCodeResult = Assert.IsType<ObjectResult>(result);
@@ -117,7 +121,6 @@ public class ProductUnitTestController
                               .ReturnsAsync(productDto);
         var controller = new ProductsController(
             productService.Object,
-            s3Client.Object,
             configuration.Object,
             logger.Object
         );
@@ -144,7 +147,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -187,7 +189,6 @@ public class ProductUnitTestController
                               .ReturnsAsync(productDto);
         var controller = new ProductsController(
             productService.Object,
-            s3Client.Object,
             configuration.Object,
             logger.Object
         );
@@ -221,7 +222,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -254,7 +254,6 @@ public class ProductUnitTestController
                               .ReturnsAsync(productDto);
         var controller = new ProductsController(
             productService.Object,
-            s3Client.Object,
             configuration.Object,
             logger.Object
         );
@@ -289,7 +288,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -311,7 +309,6 @@ public class ProductUnitTestController
                               .ReturnsAsync(true);
         var controller = new ProductsController(
             productService.Object,
-            s3Client.Object,
             configuration.Object,
             logger.Object
         );
@@ -338,7 +335,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -360,7 +356,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -383,7 +378,6 @@ public class ProductUnitTestController
 
         var controller = new ProductsController(
            productService.Object,
-           s3Client.Object,
            configuration.Object,
            logger.Object
        );
@@ -398,4 +392,25 @@ public class ProductUnitTestController
         Assert.IsType<BadRequestObjectResult>(result);
     }
 
+    [Fact]
+    public void GetImage_ReturnsImageFile()
+    {
+        // Arrange
+        var imageName = "sample.jpg";
+        var expectedMimeType = "image/jpeg";
+
+        var controller = new ProductsController(
+           productService.Object,
+           configuration.Object,
+           logger.Object
+       );
+
+        // Act
+        var result = controller.GetImage(imageName) as PhysicalFileResult;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(expectedMimeType, result.ContentType);
+
+    }
 }

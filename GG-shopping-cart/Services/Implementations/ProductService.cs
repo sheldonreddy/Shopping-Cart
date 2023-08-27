@@ -14,12 +14,25 @@ namespace GG_shopping_cart.Services.Implementations
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllProducts()
+        public async Task<ProductsPaginationDto> GetAllProducts(int pageNumber = 1, int pageSize = 10)
         {
+            int itemsToSkip = (pageNumber - 1) * pageSize;
             var products = await _context.Products.Select(product =>
-            ModelConverter.ModelToDto(product)).ToListAsync();
+            ModelConverter.ModelToDto(product))
+                .Skip(itemsToSkip)
+                .Take(pageSize)
+                .ToListAsync();
 
-            return products;
+            int totalItems = _context.Products.Count();
+
+
+            return new ProductsPaginationDto
+            {
+                Products = products,
+                CurrentPage = pageNumber,
+                PageSize = pageSize,
+                TotalItems = totalItems,
+            };
         }
 
         public async Task<ProductDto?> GetProduct(string id)
