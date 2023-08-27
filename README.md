@@ -33,7 +33,7 @@ The API features the following functionalities:
 
 3. **Image Attachment:**
    - Shopping cart items can have images attached.
-   - Users can upload and attach images to their cart items.
+   - These images when added return an url which can be used when adding the details of a product associated to the image.
 
 4. **Swagger Interface:**
    - The API is documented using the Swagger/OpenAPI standard.
