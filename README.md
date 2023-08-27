@@ -13,7 +13,7 @@ Welcome to the Games Global Shopping Cart API documentation! This README provide
 
 ## Introduction
 
-The Games Global Shopping Cart API is a powerful and secure RESTful API designed to provide seamless shopping cart management for users. It's built using ASP.NET Core and follows best practices to ensure security, performance, and maintainability.
+The Games Global Shopping Cart API is a secure RESTful API designed to provide seamless shopping cart management for users. It's built using ASP.NET Core and follows best practices to ensure security, performance, and maintainability.
 
 ## API Specification
 
