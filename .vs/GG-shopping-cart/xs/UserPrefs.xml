@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{19E0BB2D-578F-4698-981C-427E1DF42D40}|https">
+﻿<Properties StartupConfiguration="{CC2381AD-C906-48EF-9326-AF85B8573CD1}|Default">
   <MonoDevelop.Ide.ItemProperties.GG-shopping-cart-test PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GG-shopping-cart-test/TestBase.cs">
@@ -54,4 +54,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.GG-shopping-cart PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

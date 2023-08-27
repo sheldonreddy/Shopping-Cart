@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GG-shopping-cart", "GG-shop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GG-shopping-cart-test", "GG-shopping-cart-test\GG-shopping-cart-test.csproj", "{DC2BA028-551F-41EB-979A-7EAEE3CCE190}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CC2381AD-C906-48EF-9326-AF85B8573CD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DC2BA028-551F-41EB-979A-7EAEE3CCE190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2BA028-551F-41EB-979A-7EAEE3CCE190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2BA028-551F-41EB-979A-7EAEE3CCE190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC2381AD-C906-48EF-9326-AF85B8573CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2381AD-C906-48EF-9326-AF85B8573CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2381AD-C906-48EF-9326-AF85B8573CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2381AD-C906-48EF-9326-AF85B8573CD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gg-shopping-cart:
+    image: ${DOCKER_REGISTRY-}ggshoppingcart
+    build:
+      context: .
+      dockerfile: GG-shopping-cart/Dockerfile
